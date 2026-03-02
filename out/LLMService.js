@@ -18,7 +18,8 @@ class LLMService {
     initialize() {
         const config = vscode.workspace.getConfiguration("visualExplainer");
         const apiKey = config.get("geminiApiKey") ||
-            "AIzaSyAhVkYZOCgxGy724PK6uxKEvC40y388MVY";
+            process.env.GEMINI_API_KEY ||
+            "";
         if (apiKey) {
             this.genAI = new generative_ai_1.GoogleGenerativeAI(apiKey);
             // Use standard text model

@@ -20,7 +20,8 @@ export class LLMService {
     const config = vscode.workspace.getConfiguration("visualExplainer");
     const apiKey =
       config.get<string>("geminiApiKey") ||
-      "AIzaSyAhVkYZOCgxGy724PK6uxKEvC40y388MVY";
+      process.env.GEMINI_API_KEY ||
+      "";
 
     if (apiKey) {
       this.genAI = new GoogleGenerativeAI(apiKey);
