@@ -1,0 +1,55 @@
+{
+  "name": "visual-explainer",
+  "displayName": "VisualExplainer",
+  "description": "AI-powered visualizer and explainer for your code",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "visualExplainer.explainSelection",
+        "title": "VisualExplainer: Explain Code"
+      },
+      {
+        "command": "visualExplainer.visualizeCode",
+        "title": "VisualExplainer: Visualize Code"
+      }
+    ],
+    "configuration": {
+      "title": "VisualExplainer",
+      "properties": {
+        "visualExplainer.geminiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API Key for Google Gemini"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "eslint": "^8.50.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0"
+  }
+}
